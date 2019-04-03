@@ -3,6 +3,7 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
+import java.io.File;
 import java.util.List;
 
 public class FindLauncher {
@@ -12,10 +13,10 @@ public class FindLauncher {
     private Boolean r = false;
 
     @Option(name = "-d", metaVar = "Directory", usage = "Directory Search")
-    private String dirName = "";
+    private File dir = new File(".");
 
     @Argument(required = true, metaVar = "File name", usage = "Input file name")
-    private String fileName;
+    private File fileName;
 
 
     public static void main(String[] args) {
@@ -34,11 +35,11 @@ public class FindLauncher {
 
         }
 
-        Find file = new Find(dirName, fileName, r);
+        Find file = new Find(dir, fileName, r);
 
         try {
             List<String> result = file.getFilePath();
-            System.out.println("Searching results: " + result);
+            for (String s: result) System.out.println(s);
 
         } catch (Exception e) {
 

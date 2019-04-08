@@ -10,7 +10,7 @@ public class Find {
         this.r = r;
         this.fileName = fileName;
         if (dir.exists()) findFile(dir);
-        else throw new NullPointerException("Directory not found");
+        else throw new IllegalArgumentException("Directory not found");
     }
 
 

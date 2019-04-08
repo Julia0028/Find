@@ -69,7 +69,7 @@ public class FindTest {
 
     @Test
     public void FindException(){
-        expectedException.expect(NullPointerException.class);
+        expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Directory not found");
         File dir = new File("Directory/Dir");
         File fileName = new File(dir, "pp");
